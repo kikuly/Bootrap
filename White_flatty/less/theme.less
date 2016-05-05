@@ -1,0 +1,301 @@
+
+//
+// Load core variables and mixins
+// --------------------------------------------------
+@import "bootstrap/bootstrap.less";
+@import "variables.less";
+@import "bootstrap/mixins.less";
+
+//
+// Typography
+//---------------------------------------------------
+
+
+
+.jumbotron {
+  h1,h2,h3,h4,h5,h6{
+    text-shadow: 0 -1px 0 rgba(0,0,0, .5);
+  }
+  
+}
+
+
+
+
+
+//
+// Buttons
+// --------------------------------------------------
+
+// Common styles
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+ @shadow: inset 0 -1px 1px rgba(0,0,0,.35);
+  .box-shadow(@shadow);
+
+  // Reset the shadow
+  &:active,
+  &.active {
+    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+  &:hover{
+    @shadow: inset 0 -3px 0 rgba(0,0,0,.65);
+  }
+  &:hover + &:active{
+    .box-shadow(inset 0 2px 5px rgba(0,0,0,.125));
+  }
+}
+
+
+.btn {
+ 
+  border-radius: @border-radius-xl;
+}
+
+
+
+// fix dropdown btn in .navbar-btn .dropdown-toggle .btn-sm usage case
+.btn-group .btn + .btn.navbar-btn {
+    margin-top: 8px;
+  }
+
+//
+// Images
+// --------------------------------------------------
+
+.thumbnail,
+.img-thumbnail {
+  .box-shadow(0 -3px 0px rgba(0,0,0,.075) inset);
+}
+
+
+
+//
+// Dropdowns
+// --------------------------------------------------
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  #gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
+  background-color: darken(@dropdown-link-hover-bg, 5%);
+}
+
+
+
+//
+// Navbar
+// --------------------------------------------------
+
+// Basic navbar
+.navbar {
+ background:#fff;
+  border-radius: @navbar-border-radius;
+  @shadow: inset 0 -3px 0 rgba(0,0,0,.15), 0 1px 5px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
+  border-bottom:0px;
+
+  .navbar-nav > .active > a {
+    background-color: @navbar-default-bg;
+     box-shadow:inset 0 -3px 0 rgba(0,0,0,.15);
+  }
+
+  .navbar-nav > li > a:hover {
+    background-color: darken(@navbar-default-bg, 5%);
+     box-shadow:inset 0 -3px 0 rgba(0,0,0,.15);
+  }
+
+}
+.navbar-brand,
+.navbar-nav > li > a {
+  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+}
+
+// Inverted navbar
+.navbar-inverse {
+ // #gradient > .vertical(@start-color: lighten(@navbar-inverse-bg, 10%); @end-color: @navbar-inverse-bg;);
+background:@brand-primary;
+@shadow: inset 0 -3px 0 rgba(0,0,0,.15), 0 1px 5px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
+  border-bottom:0px;
+  .navbar-nav > .active > a {
+    background-color: @navbar-inverse-bg;
+     box-shadow:inset 0 -3px 0 rgba(0,0,0,.15);
+  }
+
+  .navbar-brand,
+  .navbar-nav > li > a {
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  }
+  .navbar-nav > li > a:hover {
+    background-color: darken(@navbar-inverse-bg, 5%);
+     box-shadow:inset 0 -3px 0 rgba(0,0,0,.15);
+  }
+
+}
+
+// Undo rounded corners in static and fixed navbars
+.navbar-static-top,
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  border-radius: 0;
+}
+
+
+//
+// Tabs
+//--------------------------------------------------
+.nav-tabs{
+  margin-bottom:15px;
+}
+
+
+//
+// Alerts
+// --------------------------------------------------
+
+// Common styles
+.alert {
+  text-shadow: 0 1px 0 rgba(255,255,255,.2);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 2px rgba(0,0,0,.05);
+  .box-shadow(@shadow);
+}
+
+// Mixin for generating new styles
+.alert-styles(@color) {
+  #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 7.5%));
+  border-color: darken(@color, 15%);
+}
+
+// Apply the mixin to the alerts
+.alert-success    { .alert-styles(@alert-success-bg); }
+.alert-info       { .alert-styles(@alert-info-bg); }
+.alert-warning    { .alert-styles(@alert-warning-bg); }
+.alert-danger     { .alert-styles(@alert-danger-bg); }
+
+
+
+//
+// Progress bars
+// --------------------------------------------------
+
+// Give the progress background some depth
+.progress {
+  #gradient > .vertical(@start-color: darken(@progress-bg, 4%); @end-color: @progress-bg;)
+}
+
+// Mixin for generating new styles
+.progress-bar-styles(@color) {
+  #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 10%));
+}
+
+// Apply the mixin to the progress bars
+.progress-bar            { .progress-bar-styles(@progress-bar-bg); }
+.progress-bar-success    { .progress-bar-styles(@progress-bar-success-bg); }
+.progress-bar-info       { .progress-bar-styles(@progress-bar-info-bg); }
+.progress-bar-warning    { .progress-bar-styles(@progress-bar-warning-bg); }
+.progress-bar-danger     { .progress-bar-styles(@progress-bar-danger-bg); }
+
+
+
+//
+// List groups
+// --------------------------------------------------
+
+.list-group {
+  border-radius: @border-radius-base;
+  .box-shadow(0 1px 2px rgba(0,0,0,.075));
+}
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus{
+  text-shadow: 0 -1px 0 darken(@list-group-active-bg, 10%);
+  background: @brand-primary;
+  color:#ccc;
+  border-color: darken(@list-group-active-border, 7.5%);
+}
+
+
+
+
+//
+// Panels
+// --------------------------------------------------
+
+// Common styles
+.panel {
+// .box-shadow(0px 0px 25px rgba(0,0,0,.15) );
+}
+
+
+
+// Panel headings only
+.panel-default  { background: @panel-default-bg; color: @panel-default-text; border:2px solid #ccc;}
+.panel-primary   { background: @panel-primary-bg; border-color: @brand-primary; color: @panel-primary-text; }
+.panel-success  { background: @panel-success-bg; border-color: @brand-success; color: @panel-success-text;}
+.panel-info  { background: @panel-info-bg; border-color:@brand-info; color: @panel-info-text;}
+.panel-warning   { background: @panel-warning-bg; border-color:@brand-warning; color: @panel-warning-text;}
+.panel-danger   { background: @panel-danger-bg; border-color:@brand-danger; color: @panel-danger-text;}
+
+.panel-default > .panel-heading { text-transform:uppercase; border-color: lighten(@gray-dark, 50%); text-shadow: 1px 1px 0px #fff;}
+.panel-primary  > .panel-heading { text-transform:uppercase; color:#fff; border:none; background: darken(@panel-primary-bg, 10%);}
+.panel-success > .panel-heading { text-transform:uppercase; color:#fff; border:none; background: darken(@panel-success-bg, 10%); }
+.panel-info > .panel-heading { text-transform:uppercase; color:#fff; border:none; background: darken(@panel-info-bg, 10%);}
+.panel-warning > .panel-heading  { text-transform:uppercase; color:#fff; border:none; background: darken(@panel-warning-bg, 10%); }
+.panel-danger  > .panel-heading {text-transform:uppercase; color:#fff; border:none; background: darken(@panel-danger-bg, 10%);}
+
+.panel-default > .panel-footer { background: @panel-default-footer-bg; color: @panel-default-text;}
+.panel-primary > .panel-footer  { background: @panel-primary-footer-bg; border:none; color: @panel-primary-text;}
+.panel-success > .panel-footer { background: @panel-success-footer-bg; border:none; color: @panel-success-text;}
+.panel-info > .panel-footer { background: @panel-info-footer-bg; border:none; color: @panel-info-text;}
+.panel-warning  > .panel-footer { background: @panel-warning-footer-bg; border:none; color: @panel-warning-text;}
+.panel-danger  > .panel-footer { background: @panel-danger-footer-bg; border:none; color: @panel-danger-text;}
+
+.panel-default,
+.panel-success,
+.panel-warning,
+.panel-danger,
+.panel-info{
+  .list-group-item.active{
+    color:#fff;
+  }
+}
+
+.panel-default,
+.panel-success,
+.panel-warning,
+.panel-danger,
+.panel-info{
+  .list-group-item{
+    color:@brand-primary;
+  }
+}
+
+.panel-default,
+.panel-success,
+.panel-warning,
+.panel-danger,
+.panel-info{
+  .lead{
+    text-shadow: 0 1px 0px rgba(250,250,250, .3);
+
+  }
+}
+
+
+//
+// Wells
+// --------------------------------------------------
+
+.well {
+  #gradient > .vertical(@start-color: lighten(@well-bg, 5%); @end-color: @well-bg;);
+  border-color: darken(@well-bg, 10%);
+   .box-shadow(0px 0px 20px rgba(0,0,0,.05));
+}
